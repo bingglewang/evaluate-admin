@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.mpvue.springbootmpvue.sqlserver.mapper.HouseAndRealestateMapper" >
+    <resultMap type="HouseAndRealestate" id="baseMap">
+        <id property="id" column="id"/>
+        <result property="gjsd" column="gjsd"/>
+        <result property="build" column="build"/>
+        <result property="rsDz" column="Rs_dz"/>
+        <result property="rsDj" column="rs_dj"/>
+        <result property="cx" column="cx"/>
+        <result property="rsMj" column="rs_mj"/>
+        <result property="zx" column="zx"/>
+        <result property="zcs" column="zcs"/>
+        <result property="pgc" column="pgc"/>
+        <result property="pm" column="pm"/>
+        <result property="wq" column="wq"/>
+        <result property="jg" column="jg"/>
+        <result property="yt" column="yt"/>
+        <result property="completedDate" column="completedDate"/>
+        <result property="rsType" column="rs_type"/>
+        <result property="area" column="area"/>
+    </resultMap>
+
+    <!--联表查询house和realestate-->
+    <select id="selectHouseRealestateByAddress" resultMap="baseMap">
+        select distinct *
+        from UDS_HOURSE h
+        join UDS_REALESTATE r
+        on h.realestateid = r.id
+        join uds_task_gjd t
+        on r.PK_UDS_Task_gjd_ID = t.gjdID
+        where h.build like '%'+#{address}+'%'
+        or r.rs_dz like '%'+#{address}+'%'
+        order by t.gjsd desc
+    </select>
+</mapper>
