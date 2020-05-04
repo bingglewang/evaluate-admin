@@ -12,16 +12,16 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableAutoConfiguration
 @MapperScan("com.spring.mpvue.springbootmpvue.mybatis.mapper")
-public class SpringbootMpvueApplication extends SpringBootServletInitializer {
+public class SpringbootMpvueApplication  {//extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootMpvueApplication.class, args);
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        // TODO Auto-generated method stub
-//      return super.configure(builder);
-        return builder.sources(this.getClass());
-    }
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//        // TODO Auto-generated method stub
+////      return super.configure(builder);
+//        return builder.sources(this.getClass());
+//    }
 }
